@@ -20,18 +20,17 @@ public class UserService {
     }
 
     public int createUser(User user) {
+        // newUser may differ from user somehow??
         User newUser = new User();
+        newUser.setFirstname(user.getFirstname());
+        newUser.setLastname(user.getLastname());
         newUser.setUsername(user.getUsername());
-        newUser.setFirstName(user.getFirstName());
-        newUser.setLastName(user.getLastName());
 
-        String hashedPassword =
-                passwordEncoder.encode(user.getPassword());
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
 
         newUser.setPassword(hashedPassword);
 
         repository.save(newUser);
-
         return 1;
     }
 

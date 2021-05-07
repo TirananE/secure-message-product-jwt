@@ -34,6 +34,4 @@ public class MessageController {
         model.addAttribute("messages", repository.findAll());
         return "redirect:message";
     }
-
-
 }
